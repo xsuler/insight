@@ -27,6 +27,7 @@
         window.addEventListener("message", function(event) {
             // Optionally, validate the origin of the message
             // if (event.origin !== "https://your-streamlit-app.com") return;
+          console.log(event.data)
             if(event.data == "reload"){
             const url = new URL(currentURL);
             const baseURL = `${url.protocol}//${url.hostname}${url.port ? ':' + url.port : ''}`;
