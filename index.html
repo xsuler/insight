@@ -23,8 +23,10 @@
 
   </head>
   <body>
-    <iframe src="https://stinsight.streamlit.app/?embedded=true">
-        Your browser doesn't support iframes
-    </iframe>
+    <script type="text/javascript">
+  url = parent.document.URL;
+  document.write('<iframe src="https://stinsight.streamlit.app/?embedded=true&url=' + url + '"></iframe>');
+    </script>
+
   </body>
 </html>
