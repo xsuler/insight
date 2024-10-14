@@ -20,21 +20,24 @@
       width: 100vw;
     }
     </style>
-
-  </head>
-  <body>
-    <script type="text/javascript">
-        window.addEventListener("message", function(event) {
+    <script>
+              window.addEventListener("message", function(event) {
             // Optionally, validate the origin of the message
             // if (event.origin !== "https://your-streamlit-app.com") return;
           console.log(event.data)
             if(event.data == "reload"){
-            const url = new URL(currentURL);
+            const url = new URL(window.loation.href);
             const baseURL = `${url.protocol}//${url.hostname}${url.port ? ':' + url.port : ''}`;
             window.location.href = baseURL;
             }
             
         }, false);
+    </script>
+
+  </head>
+  <body>
+    <script type="text/javascript">
+
 
 
   function fragmentToQueryParams(url) {
