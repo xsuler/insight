@@ -24,8 +24,25 @@
   </head>
   <body>
     <script type="text/javascript">
-  url = parent.document.URL;
-  document.write('<iframe src="https://stinsight.streamlit.app/?embedded=true&url=' + url + '"></iframe>');
+      function fragmentToQueryParams(url) {
+    const urlObj = new URL(url);
+    const fragment = urlObj.hash.slice(1); // Remove the '#' character
+    const params = new URLSearchParams(fragment);
+
+    const queryParams = new URLSearchParams();
+    for (const [key, value] of params.entries()) {
+        queryParams.append(key, value);
+    }
+
+    // Convert to query string
+    const queryString = queryParams.toString();
+    return queryString;
+}
+
+// Example usage
+const url = window.location.href;
+const queryParams = fragmentToQueryParams(url);
+  document.write('<iframe src="https://stinsight.streamlit.app/?embedded=true&'+queryParams+'"></iframe>');
     </script>
 
   </body>
