@@ -26,7 +26,7 @@
             // if (event.origin !== "https://your-streamlit-app.com") return;
           console.log(event.data)
             if(event.data == "reload"){
-            const url = new URL(window.loation.href);
+            const url = new URL(window.location.href);
             const baseURL = `${url.protocol}//${url.hostname}${url.port ? ':' + url.port : ''}`;
             window.location.href = baseURL;
             }
