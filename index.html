@@ -21,6 +21,14 @@
     }
     </style>
     <script>
+      function remove_hash_from_url()
+{
+    var uri = window.location.toString();
+    if (uri.indexOf("#") > 0) {
+        var clean_uri = uri.substring(0, uri.indexOf("#"));
+        window.history.replaceState({}, document.title, clean_uri);
+    }
+}
               window.addEventListener("message", function(event) {
             // Optionally, validate the origin of the message
             // if (event.origin !== "https://your-streamlit-app.com") return;
@@ -28,7 +36,7 @@
             if(event.data == "reload"){
             const url = new URL(window.location.href);
             const baseURL = `${url.protocol}//${url.hostname}${url.port ? ':' + url.port : ''}`;
-            window.location.href = baseURL;
+            remove_hash_from_url()
             }
             
         }, false);
