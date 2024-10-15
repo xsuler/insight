@@ -33,10 +33,13 @@
             // Optionally, validate the origin of the message
             // if (event.origin !== "https://your-streamlit-app.com") return;
           console.log(event.data)
-            if(event.data == "reload"){
+            if((event.data == "reload")||(event.data=="refresh")){
             const url = new URL(window.location.href);
             const baseURL = `${url.protocol}//${url.hostname}${url.port ? ':' + url.port : ''}`;
             remove_hash_from_url()
+              if(event.data=="refresh"){
+                window.location.href=baseURL
+              }
             }
             
         }, false);
